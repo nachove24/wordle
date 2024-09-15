@@ -70,7 +70,7 @@
                           <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField2" min="-2" pref="152" max="-2" attributes="0"/>
+                          <Component id="txtRespuesta" min="-2" pref="152" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnSubmit" min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
@@ -209,7 +209,7 @@
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtRespuesta" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnSubmit" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -526,7 +526,7 @@
             <Property name="text" type="java.lang.String" value="WORDLE:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txtRespuesta">
         </Component>
         <Component class="javax.swing.JButton" name="btnSubmit">
           <Properties>

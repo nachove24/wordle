@@ -1,19 +1,29 @@
 
 package com.vendrellignacio.wordle;
 
+import com.vendrellignacio.wordle.igu.Principal;
 import com.vendrellignacio.wordle.logic.Controladora;
-import com.vendrellignacio.wordle.logic.Palabra;
-/*import java.util.ArrayList;
-import java.util.List;*/
+import com.vendrellignacio.wordle.logic.LetraAdivinar;
+
+
 
 
 public class Wordle {
 
     public static void main(String[] args) {
-        Palabra word;
+        LetraAdivinar letras;
         Controladora control = new Controladora();
-        control.insertarPalabras();
-        
+        //obtengo la palabra del día
+        String palabra = control.obtenerPalabra();
+        System.out.println(palabra);
+        //llamo un metodo que pasa a char cada letra del string 
+        char[] caracteres = control.stringToChar(palabra);
+        //inicializa un OBJ al cual le agrega cada caracter
+        letras = control.crearLetrasAdi(caracteres);
+        //abrimos la interfaz
+        Principal princ = new Principal(letras);
+        princ.setVisible(true);
+        princ.setLocationRelativeTo(null);
          
     }
 }

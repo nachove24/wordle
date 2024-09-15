@@ -1,12 +1,20 @@
 
 package com.vendrellignacio.wordle.igu;
 
+import com.vendrellignacio.wordle.logic.Controladora;
+import com.vendrellignacio.wordle.logic.LetraAdivinar;
+import com.vendrellignacio.wordle.logic.LetraIntento;
+
 
 public class Principal extends javax.swing.JFrame {
-
-    
-    public Principal() {
+    Controladora control;
+    LetraAdivinar letras;
+    LetraIntento letrasInt;
+    int intentos;
+    public Principal(LetraAdivinar letras) {
         initComponents();
+        this.letras = letras;
+        this.control = new Controladora();
     }
 
     
@@ -49,7 +57,7 @@ public class Principal extends javax.swing.JFrame {
         txtE4 = new javax.swing.JTextField();
         txtE5 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtRespuesta = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
 
         jTextField10.setFont(new java.awt.Font("HP Simplified Jpan", 1, 24)); // NOI18N
@@ -230,7 +238,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(108, 108, 108)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -343,7 +351,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -370,6 +378,16 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         
+        //obtenemos la respuesta y la guardamos en una variable
+        String respuesta = txtRespuesta.getText();
+        //lo convertimos en un array que almacena cada letra del string
+        char[] caracteres = control.stringToChar(respuesta);
+        //creamos un OBJ para el tipo respuesta
+        letrasInt = control.crearIntento(caracteres);
+        
+        //guardamos que se ha hecho un intento
+        intentos += 1;
+        //
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     
@@ -387,7 +405,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtA1;
     private javax.swing.JTextField txtA2;
     private javax.swing.JTextField txtA3;
@@ -413,5 +430,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txtE3;
     private javax.swing.JTextField txtE4;
     private javax.swing.JTextField txtE5;
+    private javax.swing.JTextField txtRespuesta;
     // End of variables declaration//GEN-END:variables
 }
