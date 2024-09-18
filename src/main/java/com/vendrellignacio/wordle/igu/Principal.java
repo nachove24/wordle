@@ -68,6 +68,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtRespuesta = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
+        btnReglas = new javax.swing.JButton();
 
         jTextField10.setFont(new java.awt.Font("HP Simplified Jpan", 1, 24)); // NOI18N
 
@@ -264,6 +265,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnReglas.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnReglas.setText("?");
+        btnReglas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReglasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -295,7 +304,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(txtE1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtA1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtB2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,9 +341,10 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(txtC5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtD5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtE5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(119, 119, 119)))))
+                                .addGap(85, 85, 85)
+                                .addComponent(btnReglas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -351,7 +361,11 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnReglas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtA1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -429,7 +443,12 @@ public class Principal extends javax.swing.JFrame {
  
         //obtenemos la respuesta y la guardamos en una variable
         String respuesta = txtRespuesta.getText();
-        
+        //verificamos si tiene exactamente 5 caracteres
+        if (respuesta.length() != 5) {
+                    // Si el texto no tiene exactamente 5 caracteres, limpiar el JTextField
+                    JOptionPane.showMessageDialog(null, "Debe ingresar exactamente 5 caracteres.");
+                    txtRespuesta.setText("");  // Limpiar el JTextField
+                } else {
         //comparamos ambas palabras para saber si son identicas
         /*if (respuesta.equals(palabra)) {
             
@@ -582,9 +601,13 @@ public class Principal extends javax.swing.JFrame {
                 if (respuesta.equals(palabra)) {
                     mostrarMensaje("¡¡Felicitaciones!! Ha ACERTADO la PALABRA","info","EXCELENTE");
                     System.exit(0); // Finaliza el programa con éxito
+                }else{
+                    mostrarMensaje("¡¡Mala Suerte!! No ha adivinado la palabra.","error","FALLO");
+                    System.exit(0); // Finaliza el programa con éxito
                 }
             }
         }
+       }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -592,13 +615,24 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void txtC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtC4ActionPerformed
-        // TODO add your handling code here:
+        // 
     }//GEN-LAST:event_txtC4ActionPerformed
+
+    private void btnReglasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReglasActionPerformed
+        mostrarMensaje("""
+                       Wordle es un juego de palabras donde el objetivo es adivinar una palabra de cinco letras en seis intentos o menos. Cada vez que introduces una palabra, el juego te da pistas:
+                       
+                       Las letras en verde est\u00e1n en la palabra y en la posici\u00f3n correcta.
+                       Las letras en amarillo est\u00e1n en la palabra, pero en la posici\u00f3n incorrecta.
+                       Las letras en gris no est\u00e1n en la palabra.
+                       Usa las pistas para descubrir la palabra correcta dentro de los intentos permitidos.""","info","REGLAS");
+    }//GEN-LAST:event_btnReglasActionPerformed
 
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReglas;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
