@@ -82,14 +82,34 @@ public class Controladora {
         letraInt = new LetraIntento();
         for (int i = 0; i < 5; i++) {
                 switch (i+1) {
-                    case 1 -> letra.setPrimera(caracteres[i]);
-                    case 2 -> letra.setSegunda(caracteres[i]);
-                    case 3 -> letra.setTercera(caracteres[i]);
-                    case 4 -> letra.setCuarta(caracteres[i]);
-                    case 5 -> letra.setQuinta(caracteres[i]);
+                    case 1 -> letraInt.setPrimera(caracteres[i]);
+                    case 2 -> letraInt.setSegunda(caracteres[i]);
+                    case 3 -> letraInt.setTercera(caracteres[i]);
+                    case 4 -> letraInt.setCuarta(caracteres[i]);
+                    case 5 -> letraInt.setQuinta(caracteres[i]);
                 }
         }
         return letraInt;
+    }
+
+    public char[] letrasToChar(LetraIntento letrasInt) {
+         char[] letrasToChar = new char[5];
+         letrasToChar[0]=letrasInt.getPrimera();
+         letrasToChar[1]=letrasInt.getSegunda();
+         letrasToChar[2]=letrasInt.getTercera();
+         letrasToChar[3]=letrasInt.getCuarta();
+         letrasToChar[4]=letrasInt.getQuinta();
+         return letrasToChar;
+    }
+
+    public char[] letrasAdiToChar(LetraAdivinar letras) {
+         char[] letrasToChar = new char[5];
+         letrasToChar[0]=letras.getPrimera();
+         letrasToChar[1]=letras.getSegunda();
+         letrasToChar[2]=letras.getTercera();
+         letrasToChar[3]=letras.getCuarta();
+         letrasToChar[4]=letras.getQuinta();
+         return letrasToChar;
     }
     
     
